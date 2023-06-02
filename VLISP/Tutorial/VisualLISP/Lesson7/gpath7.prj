@@ -1,0 +1,16 @@
+;;; VLisp project file [V2.0] gpath7 saved to:[C:/Program Files/ACAD2000/Tutorial/VisualLISP/lesson7] at:[1/19/99] 
+(VLISP-PROJECT-LIST
+  :NAME
+  gpath7
+  :OWN-LIST
+  ("UTILS" "GP-IO" "GPDRAW" "GPPOLY" "GPREACT" "GPMAIN")
+  :FAS-DIRECTORY
+  nil
+  :TMP-DIRECTORY
+  nil
+  :PROJECT-KEYS
+  (:BUILD (:standard))
+  :CONTEXT-ID
+  :AUTOLISP
+)
+;;; EOF

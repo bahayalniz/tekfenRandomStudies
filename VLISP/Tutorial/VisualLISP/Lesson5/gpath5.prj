@@ -1,0 +1,16 @@
+;;; VLisp project file [V2.0] gpath5 saved to:[C:/Program Files/AutoCAD T/TUTORIAL/new TUT/lesson5] at:[11/3/98] 
+(VLISP-PROJECT-LIST
+  :NAME
+  gpath5
+  :OWN-LIST
+  ("UTILS" "GP-IO" "GPDRAW" "GPMAIN")
+  :FAS-DIRECTORY
+  nil
+  :TMP-DIRECTORY
+  nil
+  :PROJECT-KEYS
+  (:BUILD (:standard))
+  :CONTEXT-ID
+  :AUTOLISP
+)
+;; EOF

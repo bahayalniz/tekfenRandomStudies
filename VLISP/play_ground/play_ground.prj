@@ -1,0 +1,16 @@
+;;; VLisp project file [V2.0] play_ground saved to:[c:\Users\BAHA-LAPTOP\Documents\GitHub\tekfenRandomStudies\antet_automation\VLISP] at:[5/31/2023]
+(VLISP-PROJECT-LIST 
+  :NAME
+  play_ground
+  :OWN-LIST
+  ("play_ground" "WBPool")
+  :FAS-DIRECTORY
+  nil
+  :TMP-DIRECTORY
+  nil
+  :PROJECT-KEYS
+  (:BUILD (:standard))
+  :CONTEXT-ID
+  :AUTOLISP
+)
+;;; EOF
