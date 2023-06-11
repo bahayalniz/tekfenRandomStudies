@@ -51,7 +51,7 @@
 ; ╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝    ╚═╝   
 
 ;1 -  The directory where the table is located:
-(setq csv_file "C:/Users/BAHA-LAPTOP/Documents/GitHub/tekfenRandomStudies/excel_to_letterhead/documents/ANTET-VARIABLES-V2.csv")
+(setq csv_file "C:/Users/BAHA-LAPTOP/Documents/GitHub/tekfenRandomStudies/excel_to_letterhead/documents/DATA/ANTET-VARIABLES-V2.csv")
 
 ;2 -  The project code. This variable is used to check 
 ;     if the table rows contain valid information 
