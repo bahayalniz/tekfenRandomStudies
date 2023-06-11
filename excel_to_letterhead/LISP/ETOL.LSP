@@ -71,10 +71,11 @@
 
 (setq export_path "C:/Users/BAHA-LAPTOP/Documents/GitHub/tekfenRandomStudies/excel_to_letterhead/documents/EXPORT_ANTET/")
 
-(setq data (LM:readcsv file))
+(setq data (LM:readcsv file)) ;WHOLE TABLE
+
+(setq project_code "M7U")
 
 (setq counter 0)
-
 ;LENGTH OF THE TABLE  
 (foreach line data 
   (setq counter (+ counter 1))
@@ -92,35 +93,34 @@
 ; ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 
 (foreach line data
-  
+  (setq pafta_no (nth 0  line) )
+  (setq export (strcat export_path pafta_no ".dwg"))
+  (vl-file-copy reference_file export T) ;SAVE REFERENCE AS EXPORT
 )
-(setq line (nth 2 data))
-(setq pafta_no (nth 0  line) )
-(setq export (strcat export_path pafta_no ".dwg"))
-(vl-file-copy reference_file export T) ;SAVE REFERENCE AS EXPORT
-(setq active_file (vla-open (vla-get-documents (vlax-get-acad-object)) export))
 
-(command "_.delay" 5000)
+; (setq active_file (vla-open (vla-get-documents (vlax-get-acad-object)) export))
 
-(vla-activate active_file)
+; (command "_.delay" 5000)
 
-(command "_.delay" 5000)
+; (vla-activate active_file)
 
-(change_it "QDT"  (nth 2  line) );DATE       QDT
-(change_it "QSC"  (nth 3  line) );SCALE      QSC
-(change_it "QFM"  (nth 4  line) );FORMAT     QFM
-(change_it "QAE"  (nth 8  line) );AREA       QAE
-(change_it "QSAE" (nth 9  line) );SUBAREA    QSAE
-(change_it "QSY"  (nth 10 line) );SYSTEM     QSY
-(change_it "QSSY" (nth 11 line) );SUBSYSTEM  QSSY
-(change_it "QLN"  (nth 12 line) );LANGUAGE   QLN
-(change_it "QDCT" (nth 13 line) );DOCTYPE    QDCT
-(change_it "QDCN" (nth 14 line) );DOCNO      QDCN
+; (command "_.delay" 5000)
 
-(command "_.delay" 5000)
+; (change_it "QDT"  (nth 2  line) );DATE       QDT
+; (change_it "QSC"  (nth 3  line) );SCALE      QSC
+; (change_it "QFM"  (nth 4  line) );FORMAT     QFM
+; (change_it "QAE"  (nth 8  line) );AREA       QAE
+; (change_it "QSAE" (nth 9  line) );SUBAREA    QSAE
+; (change_it "QSY"  (nth 10 line) );SYSTEM     QSY
+; (change_it "QSSY" (nth 11 line) );SUBSYSTEM  QSSY
+; (change_it "QLN"  (nth 12 line) );LANGUAGE   QLN
+; (change_it "QDCT" (nth 13 line) );DOCTYPE    QDCT
+; (change_it "QDCN" (nth 14 line) );DOCNO      QDCN
 
-(vla-close active_file :vlax-True)
-(call_modelsapce)
+; (command "_.delay" 5000)
+
+; (vla-close active_file :vlax-True)
+; (call_modelsapce)
 
 ; (alert (itoa len))
 

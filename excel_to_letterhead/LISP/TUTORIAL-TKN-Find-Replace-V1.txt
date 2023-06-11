@@ -1,0 +1,37 @@
+TEKFEN FIND & REPLACE V1 TUTORIAL 
+by bahayalniz: 
+bahayalniz@hotmail.com 
+
+1 - Open the LSP file called "TKN-Find-Replace-V1.LSP"
+
+2 - Set all the variables under "INPUT" section
+	csv_file 	:The directory where the table is located.
+	project_code 	:The project code. This variable is used to check if the table rows contain valid information when getting the project names from the table.
+	import_path 	:The directory where all files will be processed.
+	export_path 	:The directory where the processed files will be exported.
+
+3 - Open one of the DWG files to be processed.
+
+4 - Write "APPLOAD" to the prompt interface.     
+
+5 - Select the LSP file ("TKN-Find-Replace-V1.LSP") and click load. You can either click "Always Load" or "Load Once".
+
+6 - Write "TKN-FIND-REPLACE" to call the function
+
+7 - Select the directory of the files to be processed.
+
+8 - You can monitor the process by looking at the "export" directory you have specified.                                                 
+
+IMPORTANT NOTES:
+
+***DON'T FORGET TO USE QUOTE (") WHILE SETTING THE VARIABLES.
+	WRONG CASE: 	C:/TKN/DATA/Table.csv
+	CORRECT CASE: 	"C:/TKN/DATA/Table.csv"
+
+***USE "/" INSTEAD OF "\" WHILE SETTING THE DIRECTORY VARIABLES. OTHERWISE THE CODE WON'T WORK.
+	WRONG CASE:	"C:\TKN\DATA\Table.csv"
+	CORRECT CASE:	"C:/TKN/DATA/Table.csv"
+
+***PUT "/" END OF THE IMPORT AND EXPORT PATHS. 
+	WRONG CASE: 	"C:/TKN/DATA"
+	CORRECT CASE: 	"C:/TKN/DATA/"
