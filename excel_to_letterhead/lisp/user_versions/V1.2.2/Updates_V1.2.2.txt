@@ -1,0 +1,7 @@
+14.06.2023
+
+EN
+1 - Turkish characters in descriptions have been removed.
+
+TR
+1 - Açıklamalardaki Türkçe karakterler kaldırıldı.

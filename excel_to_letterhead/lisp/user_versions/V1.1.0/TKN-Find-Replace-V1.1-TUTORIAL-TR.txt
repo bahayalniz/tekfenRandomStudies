@@ -1,0 +1,39 @@
+TEKFEN FIND & REPLACE V1 ÖĞRETİCİ
+Hazırlayan: bahayalniz
+bahayalniz@hotmail.com 
+
+1 - "TKN-Find-Replace-V1.LSP" adlı LSP dosyasını açın.
+
+2 - "INPUT" bölümü altındaki tüm değişkenleri ayarlayın
+	csv_file 	:Tablonun bulunduğu dizin.
+	project_code 	:Proje kodu. Bu değişken, tablodan proje adlarını alırken tablo satırlarının geçerli bilgiler içerip içermediğini kontrol etmek için kullanılır.
+	import_path 	:İşlenecek tüm dosyaların bulunduğu dizin.
+	export_path 	:İşlenen dosyaların dışa aktarılacağı dizin.
+
+3 - İşlenecek DWG dosyalarından birini açın.
+
+4 - Uygulama arayüzüne "APPLOAD" yazın.   
+
+5 - LSP dosyasını ("TKN-Find-Replace-V1.LSP") seçin ve yükle'ye tıklayın. "Always Load"a veya "Load Once"a tıklayabilirsiniz.
+
+6 - Fonksiyonu çağırmak için "TKN-FIND-REPLACE" yazın
+
+7 - İşlenecek dosyaların dizinini seçin.
+
+8 - Ayarlamış olduğunuz "export" dizinine bakarak süreci izleyebilirsiniz.                                         
+
+ÖNEMLİ NOTLAR:
+
+***EXCEL DOSYASINI CSV OLARAK KAYDETTİKTEN SONRA CSV DOSYASINI BİR DAHA EXCEL İLE AÇMAYINIZ. ÇÜNKÜ "00" GİBİ DİZİLERİ TEK HARFLİ SAYILARA DÖNÜŞTÜRÜR. DOSYAYI AÇMANIZ GEREKİYORSA NOTEPAD İLE YA DA HÜCERELERE MÜDAHALE ETMEYEN BAŞKA BİR PROGRAM İLE AÇIN.
+
+***DEĞİŞKENLERİ AYARLARKEN TIRNAK(") KULLANMAYI UNUTMAYINIZ.
+	YANLIŞ KULLANIM: 	C:/TKN/DATA/Table.csv
+	DOĞRU KULLANIM: 	"C:/TKN/DATA/Table.csv"
+
+***DİZİN DEĞİŞKENLERİNİ AYARLARKEN "\" YERİNE "/" KULLANIN. YOKSA KOD ÇALIŞMAZ.
+	YANLIŞ KULLANIM:	"C:\TKN\DATA\Table.csv"
+	DOĞRU KULLANIM:		"C:/TKN/DATA/Table.csv"
+
+***IMPORT VE EXPORT DİZİNLERİNİN SONUNA "/" KOYUN. 
+	YANLIŞ KULLANIM: 	"C:/TKN/DATA"
+	DOĞRU KULLANIM: 	"C:/TKN/DATA/"

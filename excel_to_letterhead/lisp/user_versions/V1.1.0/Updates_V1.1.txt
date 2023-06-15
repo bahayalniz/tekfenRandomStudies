@@ -1,0 +1,10 @@
+14.06.2023
+
+EN
+1 - Added Phase Column (The letter K represents the phase column in Headlines. The "TextContent" variable of this letter K is assigned to the variable named "phase_v" in the script).
+2 - The extra "-" symbols at the end of the name that occur during naming has been prevented.
+
+TR
+1 - Aşama Sütunu Eklendi (Antetlerde aşama sütununu K harfi temsil ediyor. Bu K harfinin "TextContent" değişkeni kod içinde "phase_v" adlı değişkene atandı).
+2 - İsimlendirme esnasında oluşan, isim sonundaki fazladan "-" sembollerinin oluşması engellendi.
+

@@ -1,0 +1,21 @@
+TEKFEN FIND & REPLACE V1.2 ÖĞRETİCİ
+Hazırlayan: bahayalniz
+bahayalniz@hotmail.com 
+
+1 - AutoCAD uygulamasını açıp, boş bir çizim ekranı açın.
+
+2 - Uygulama arayüzüne "APPLOAD" yazın.   
+
+3 - LSP dosyasını ("TKN-Find-Replace-V1.LSP") seçin ve yükle'ye tıklayın. "Always Load"a veya "Load Once"a tıklayabilirsiniz.
+
+4 - İşlemi başlatmak için "TKN-FIND-REPLACE" yazın
+
+5 - Sırasıyla; CSV dosyasını, Import dizinini ve Export dizinini seçin.
+
+6 - Ayarlamış olduğunuz "export" dizinine bakarak süreci izleyebilirsiniz.                                         
+
+ÖNEMLİ NOTLAR:
+
+***EXCEL DOSYASINI CSV OLARAK KAYDETTİKTEN SONRA CSV DOSYASINI BİR DAHA EXCEL İLE AÇMAYINIZ. ÇÜNKÜ "00" GİBİ DİZİLERİ TEK HARFLİ SAYILARA DÖNÜŞTÜRÜR. DOSYAYI AÇMANIZ GEREKİYORSA NOTEPAD İLE YA DA HÜCERELERE MÜDAHALE ETMEYEN BAŞKA BİR PROGRAM İLE AÇIN.
+
+***LISP DOSYASINI YERLEŞTİRDİĞİNİZ DİZİNDE TÜRKÇE (ÖZEL) KARAKTER OLMAMASINA DİKKAT EDİN. AKSİ TAKTİRDE AUTOCAD'E LISP DOSYASINI ÇAĞIRAMAZSINIZ.

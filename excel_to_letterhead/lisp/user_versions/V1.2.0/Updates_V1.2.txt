@@ -1,0 +1,9 @@
+14.06.2023
+
+EN
+1 - No need to open the code anymore! Just call the LSP file from AutoCAD and run the function.
+2 - It is also sufficient to call the LSP file in an empty AutoCAD interface.
+
+TR
+1 - Artık kodu açmaya gerek yok! Yalnızca AutoCAD'den LSP dosyasını çağırıp, fonksiyonu çalıştırmak yeterli.
+2 - Ayrıca LSP dosyasını boş bir AutoCAD arayüzünde çağırmak yeterli.

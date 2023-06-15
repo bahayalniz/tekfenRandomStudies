@@ -7,7 +7,7 @@ bahayalniz@hotmail.com
 2 - Set all the variables under "INPUT" section
 	csv_file 	:The directory where the table is located.
 	project_code 	:The project code. This variable is used to check if the table rows contain valid information when getting the project names from the table.
-	import_path 	:The directory where all files will be processed.
+	import_path 	:The directory with all files to be processed.
 	export_path 	:The directory where the processed files will be exported.
 
 3 - Open one of the DWG files to be processed.

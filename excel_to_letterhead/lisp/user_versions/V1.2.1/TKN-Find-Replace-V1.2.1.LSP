@@ -1,87 +1,68 @@
-;████████╗██╗   ██╗████████╗ ██████╗ ██████╗ ██╗ █████╗ ██╗     
-;╚══██╔══╝██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗██║██╔══██╗██║     
-;   ██║   ██║   ██║   ██║   ██║   ██║██████╔╝██║███████║██║     
-;   ██║   ██║   ██║   ██║   ██║   ██║██╔══██╗██║██╔══██║██║     
-;   ██║   ╚██████╔╝   ██║   ╚██████╔╝██║  ██║██║██║  ██║███████╗
-;   ╚═╝    ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝
+;-----T U T O R I A L-----;
 
-; 1 - Open the LSP file called "TKN-Find-Replace-V1.LSP"
+;TEKFEN FIND & REPLACE V1.2
+;by bahayalniz: 
+;bahayalniz@hotmail.com 
 
-; 2 - Set all the variables under "INPUT" section
-; 	    csv_file      :The directory where the table is located
-; 	    project_code  :The project code. This variable is used to check 
-;                      if the table rows contain valid information 
-;                      when getting the project names from the table.
-; 	    import_path   :The directory where all files will be processed.
-; 	    export_path   :The directory where the processed files will be exported.
+; 1 - Open AutoCAD application and open a blank drawing screen.
 
-; 3 - Open one of the DWG files to be processed.
+; 2 - Type "APPLOAD" in the application interface.   
 
-; 4 - Write "APPLOAD" to the prompt interface.  
+; 3 - Select the LSP file ("TKN-Find-Replace-V1.LSP") and click load. You can either click "Always Load" or "Load Once".
 
-; 5 - Select the LSP file ("TKN-Find-Replace-V1.LSP") and click load. You can either click "Always Load" or "Load Once".
+; 4 - Type "TKN-FIND-REPLACE" to start the process.
 
-; 6 - Write "TKN-FIND-REPLACE" to call the function
+; 5 - Select CSV file, Import Path and Export Path respectively.
 
-; 7 - Select the directory of the files to be processed.
+; 6 - You can monitor the process by looking at the "export" directory you have specified.                                                 
 
-; 8 - You can monitor the process by looking at the "export" directory you have specified.                                                 
+; IMPORTANT NOTES:
 
-;IMPORTANT NOTES:
+; ***AFTER SAVING THE EXCEL FILE AS CSV, DO NOT OPEN THE CSV FILE WITH EXCEL ANY MORE. 
+;    BECAUSE IT CONVERTS STRINGS LIKE "00" TO SINGLE LETTER NUMBERS. 
+;    IF YOU NEED TO OPEN THE FILE, OPEN WITH NOTEPAD OR ANY OTHER PROGRAM THAT DOES NOT INTERVENE WITH THE CELLS.
 
-; ***DON'T FORGET TO USE QUOTE (") WHILE SETTING THE VARIABLES.
-; 	WRONG CASE: 	C:/TKN/DATA/Table.csv
-; 	CORRECT CASE: 	"C:/TKN/DATA/Table.csv"
-
-; ***USE "/" INSTEAD OF "\" WHILE SETTING THE DIRECTORY VARIABLES. OTHERWISE THE CODE WON'T WORK.
-; 	WRONG CASE:	"C:\TKN\DATA\Table.csv"
-; 	CORRECT CASE:	"C:/TKN/DATA/Table.csv"
-
-; ***PUT "/" END OF THE IMPORT AND EXPORT PATHS. 
-; 	WRONG CASE: 	"C:/TKN/DATA"
-; 	CORRECT CASE: 	"C:/TKN/DATA/"                                      
+; ***PLEASE MAKE SURE THERE IS NO TURKISH (SPECIAL) CHARACTER IN THE DIRECTOR YOU PLACE THE LISP FILE. 
+;    OTHERWISE YOU CANNOT CALL THE LISP FILE IN AUTOCAD.                                
 
 ;------------------------------------------------------------------------------------------------------------
 
-; ██╗███╗   ██╗██████╗ ██╗   ██╗████████╗
-; ██║████╗  ██║██╔══██╗██║   ██║╚══██╔══╝
-; ██║██╔██╗ ██║██████╔╝██║   ██║   ██║   
-; ██║██║╚██╗██║██╔═══╝ ██║   ██║   ██║   
-; ██║██║ ╚████║██║     ╚██████╔╝   ██║   
-; ╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝    ╚═╝   
-
-;1 -  The directory where the table is located:
-(setq csv_file "C:/Users/BAHA-LAPTOP/Documents/GitHub/tekfenRandomStudies/excel_to_letterhead/documents/DATA/ANTET-VARIABLES-V2.csv")
-
-;2 -  The project code. This variable is used to check 
-;     if the table rows contain valid information 
-;     when getting the project names from the table.
-(setq project_code "M7")
-
-;3 -  The directory where all files will be processed.
-(setq import_path "C:/Users/BAHA-LAPTOP/Documents/GitHub/tekfenRandomStudies/excel_to_letterhead/documents/IMPORT_ANTET/")
-
-;4 -  The directory where the processed files will be exported.
-(setq export_path "C:/Users/BAHA-LAPTOP/Documents/GitHub/tekfenRandomStudies/excel_to_letterhead/documents/EXPORT_ANTET/")
-
-;------------------------------------------------------------------------------------------------------------
-
-; ██╗███╗   ███╗██████╗  ██████╗ ██████╗ ████████╗
-; ██║████╗ ████║██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝
-; ██║██╔████╔██║██████╔╝██║   ██║██████╔╝   ██║   
-; ██║██║╚██╔╝██║██╔═══╝ ██║   ██║██╔══██╗   ██║   
-; ██║██║ ╚═╝ ██║██║     ╚██████╔╝██║  ██║   ██║   
-; ╚═╝╚═╝     ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝    
+;-----I M P O R T-----;
 
 (vl-load-com)
 
 
-; ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
-; ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
-; █████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗
-; ██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║
-; ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
-; ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+;-----F U N C T I O N S-----;
+
+(defun LM:browseforfolder ( msg dir bit / err fld pth shl slf )
+    (setq err
+        (vl-catch-all-apply
+            (function
+                (lambda ( / app hwd )
+                    (if (setq app (vlax-get-acad-object)
+                              shl (vla-getinterfaceobject app "shell.application")
+                              hwd (vl-catch-all-apply 'vla-get-hwnd (list app))
+                              fld (vlax-invoke-method shl 'browseforfolder (if (vl-catch-all-error-p hwd) 0 hwd) msg bit dir)
+                        )
+                        (setq slf (vlax-get-property fld 'self)
+                              pth (vlax-get-property slf 'path)
+                              pth (vl-string-right-trim "\\" (vl-string-translate "/" "\\" pth))
+                        )
+                    )
+                )
+            )
+        )
+    )
+    (if slf (vlax-release-object slf))
+    (if fld (vlax-release-object fld))
+    (if shl (vlax-release-object shl))
+    (if (vl-catch-all-error-p err)
+        (prompt (vl-catch-all-error-message err))
+        pth
+    )
+  )
+
+;------------------------------------------------------------------------------------------------------------
 
 (defun LM:ODBX ( fun lst sav / *error* app dbx dir doc dwl err rtn vrs )
 
@@ -185,6 +166,23 @@
   )
 ;------------------------------------------------------------------------------------------------------------
 
+(defun LM:explore ( target / rtn shl )
+    (if (and (or (= 'int (type target)) (vl-file-directory-p target))
+             (setq shl (vla-getinterfaceobject (vlax-get-acad-object) "shell.application"))
+        )
+        (progn
+            (setq rtn (vl-catch-all-apply 'vlax-invoke (list shl 'explore target)))
+            (vlax-release-object shl)
+            (if (vl-catch-all-error-p rtn)
+                (prompt (vl-catch-all-error-message rtn))
+                t
+            )
+        )
+    )
+  )
+
+;------------------------------------------------------------------------------------------------------------
+
 (defun get-active-doc nil
     (cond ( acdoc ) ((setq acdoc (vla-get-activedocument (vlax-get-acad-object)))))
   )
@@ -278,6 +276,35 @@
 
 ;-----------------------------------------------------------------------------------------------------------
 
+(defun test (OldTxt NewTxt doc / txt) 
+
+  (vlax-for layout (vla-get-layouts doc) 
+    (vlax-for entry (vla-get-block layout) 
+      (if 
+        (or (eq (vla-get-objectname entry) "AcDbMText") 
+            (eq (vla-get-objectname entry) "AcDbText")
+        )
+        (progn 
+
+          (setq txt (vlax-get-property entry 'TextString))
+          
+          (if (and (vl-string-search OldTxt txt) ( eq (substr txt 1 5) "\\pxqc") )
+            (progn 
+              (print txt)
+              (setq newChg (vl-string-subst NewTxt OldTxt txt))
+              (vlax-put-property entry 'TextString newchg)
+              (vlax-invoke-method entry 'Update)
+            )
+          )
+        )
+      )
+    )
+  )
+  (princ)
+ )
+
+;-----------------------------------------------------------------------------------------------------------
+
 (defun LM:StringWrap ( str len / pos )
     (if (< len (strlen str))
         (cons
@@ -304,6 +331,20 @@
 
 ;-----------------------------------------------------------------------------------------------------------
 
+(defun name_cleaner (name / counter)
+
+  (setq counter (strlen name))
+
+  (while (eq (substr name counter 1) "-")
+    (setq counter (- counter 1))
+    )
+  
+  (setq name (substr name 1 counter))
+  
+  )
+
+;-----------------------------------------------------------------------------------------------------------
+
 (defun replace_all_text (doc / file_name pafta_no pafta_no_check pafta_no_wrap new_pafta_name)
   (setq file_name (vl-filename-base (vla-get-name doc)))
       (foreach line csv_data 
@@ -311,27 +352,28 @@
         (if (= (car line) file_name) ;Gets the line where the filename matches.
           (progn
         
-            (change_it "QDT"  (nth 2 line) doc)  ;DATE       QDT
-            (change_it "QSC"  (nth 3 line) doc)  ;SCALE      QSC
-            (change_it "QFM"  (nth 4 line) doc)  ;FORMAT     QFM
-            (change_it "QAE"  (nth 8 line) doc)  ;AREA       QAE
-            (change_it "QSAE" (nth 9 line) doc) ;SUBAREA    QSAE
-            (change_it "QSY"  (nth 10 line) doc) ;SYSTEM     QSY
-            (change_it "QSSY" (nth 11 line) doc);SUBSYSTEM  QSSY
-            (change_it "QLN"  (nth 12 line) doc) ;LANGUAGE   QLN
-            (change_it "QDCT" (nth 13 line) doc);DOCTYPE    QDCT
-            (change_it "QDCN" (nth 14 line) doc);DOCNO      QDCN
+            (change_it "QDT"  (nth 2 line) doc)   ;DATE       QDT
+            (change_it "QSC"  (nth 3 line) doc)   ;SCALE      QSC
+            (change_it "QFM"  (nth 4 line) doc)   ;FORMAT     QFM
+            (change_it "QAE"  (nth 8 line) doc)   ;AREA       QAE
+            (change_it "QSAE" (nth 9 line) doc)   ;SUBAREA    QSAE
+            (change_it "QSY"  (nth 10 line) doc)  ;SYSTEM     QSY
+            (change_it "QSSY" (nth 11 line) doc)  ;SUBSYSTEM  QSSY
+            (change_it phase_v (nth 12 line) doc) ;PHASE      K
+            (change_it "QLN"  (nth 13 line) doc)  ;LANGUAGE   QLN
+            (change_it "QDCT" (nth 14 line) doc)  ;DOCTYPE    QDCT
+            (change_it "QDCN" (nth 15 line) doc)  ;DOCNO      QDCN
+            (setq project_code (nth 7 line))
             (setq pafta_no (nth 0 line)) ;Gets the first column to get the file name
             (setq pafta_no_wrap (LM:StringWrap (nth 0 line) 1)) 
             (setq pafta_no_check (strcat (car pafta_no_wrap) (cadr pafta_no_wrap)))
             (setq new_pafta_name (LM:lst->str (cdr (cddddr line)) "-") )
+            (setq new_pafta_name (name_cleaner new_pafta_name)) ;Cleans the last parts
             (if (vl-string-search pafta_no_check project_code) 
               (progn
                 (setq import (strcat import_path pafta_no ".dwg"))
                 (setq export (strcat export_path new_pafta_name ".dwg"))
                 (vla-saveas doc export)
-                ; (vla-close doc :vlax-true)
-                ; (vl-file-copy import export :vlax-false) ;SAVE REFERENCE AS EXPORT
                 )
               )             
             )
@@ -343,39 +385,41 @@
 
 ;-----------------------------------------------------------------------------------------------------------
 
+;-----V A R I A B L E S-----;
 
-; ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗███████╗
-; ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
-; ██║   ██║███████║██████╔╝██║███████║██████╔╝██║     █████╗  ███████╗
-; ╚██╗ ██╔╝██╔══██║██╔══██╗██║██╔══██║██╔══██╗██║     ██╔══╝  ╚════██║
-;  ╚████╔╝ ██║  ██║██║  ██║██║██║  ██║██████╔╝███████╗███████╗███████║
-;   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
+(setq phase_v "\\pxqc,t4.53571,9.07143,13.60714,18.14286,22.67857,27.21429,31.75,36.28571,40.82143,45.35714,49.89286,54.42857,58.96429,63.5,68.03571,72.57143,77.10714,81.64286,86.17857,90.71429,95.25,99.78571,104.32143,108.85714,113.39286,117.92857,122.46429,127,131.53571,136.07143,140.60714,145.14286;{K}")
 
-(setq files (get-dwg-files import_path))
-(setq csv_data (LM:readcsv csv_file))
+;-----M A I N-----;
 
+(defun get_variables ()
+  ;1 -  The directory where the table is located:
+  (setq csv_file (getfiled "VERİNİN ÇEKİLECEĞİ TABLOYU SEÇİN:" "table" "csv" 4))
 
-; ███╗   ███╗ █████╗ ██╗███╗   ██╗
-; ████╗ ████║██╔══██╗██║████╗  ██║
-; ██╔████╔██║███████║██║██╔██╗ ██║
-; ██║╚██╔╝██║██╔══██║██║██║╚██╗██║
-; ██║ ╚═╝ ██║██║  ██║██║██║ ╚████║
-; ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
+  ;2 -  The directory where all files will be processed.
+  (setq import_path (strcat (LM:browseforfolder "İŞLENECEK DOSYALARIN BULUNDUĞU KLASÖRÜ SEÇİN:" "C:/" 16) "\\"))
 
+  ;3 -  The directory where the processed files will be exported.
+  (setq export_path (strcat (LM:browseforfolder "İŞLENEN DOSYALARIN KAYDEDİLECEĞİ KLASÖRÜ SEÇİN:" "C:/" 16) "\\"))
+
+  (if csv_file 
+    (setq csv_data (LM:readcsv csv_file))
+    )
+  
+)
 
 (defun c:TKN-Find-Replace ()
-
+  (get_variables)
   (LM:ODBX
     (function
         (lambda ( doc )
           (replace_all_text doc)
         )
     )
-    nil nil
+    (get-dwg-files import_path) nil
   )
   (princ)  
 
  )
 
-(prompt "Use 'TKN-Find-Replace' command to execute the function on DWG files that you will select.")
+(prompt "'TKN-Find-Replace' komutunu kullanarak işlemi başlatabilirsiniz.")
 (princ)
